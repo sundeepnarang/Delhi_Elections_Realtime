@@ -1,7 +1,19 @@
 doctype html
 html
   head
-    title= title
+    title Delhi Elections
+    meta(http-equiv='refresh', content='60')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css')
+    script(src='javascripts/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
+    script(src='javascripts/jquery.tablesorter.min.js')
+    script.
+          $(document).ready(function()
+            {
+                $("#myTable").tablesorter();
+            }
+            );
   body
     block content

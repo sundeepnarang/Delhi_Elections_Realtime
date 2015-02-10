@@ -1,5 +1,45 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 Delhi Elections
+  h3 (Pulled from Election Comission live)
+  h1 Summary
+  table.table-striped.table
+      thead
+          tr
+              th Party
+              th Leading
+              th Won
+      tbody
+          each val in party
+              tr
+                td #{val.name}
+                td #{val.value}
+                td #{val.Wvalue}
+          tr
+              td
+                  strong Total
+              td
+                  strong #{total.leading}
+              td
+                  strong #{total.won}
+  h1 Constituency Wise
+  table#myTable.table-striped.table.tablesorter
+      thead
+          tr
+              th Constituency
+              th LeadingParty
+              th TrailingParty
+              th Margin
+              th Status
+      tbody
+          each val in data
+              tr(class=(val.Status==="Result Declared"&val.LeadingParty==="Aam Aadmi Party")?"info":"" class=(val.Status==="Result Declared"&val.LeadingParty==="Bharatiya Janata Party")?"danger":"")
+                td #{val.Constituency}
+                td #{val.LeadingParty}
+                td #{val.TrailingParty}
+                td #{val.Margin}
+                td #{val.Status}
+
+
+
