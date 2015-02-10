@@ -3,6 +3,7 @@ var cheerio = require('cheerio'),
     request = require('request');
 var router = express.Router();
 var Step = require('step');
+var fs = require('fs');
 
 function getData(url,done){
     request({uri: url}, function(err, response, body){
@@ -80,6 +81,13 @@ router.get('/', function(req, res) {
                 parties.push({name:key,value:party[key].leading,Wvalue:party[key].won});
             }
             console.log(JSON.stringify(parties));
+            fs.writeFile("data "+(new Date()).toDateString()+ " "+ (new Date()).getHours() + (new Date()).getMinutes() +".txt", JSON.stringify(data), function(err) {
+                if(err) {
+                    console.log(err);
+                } else {
+                    console.log("The file was saved!");
+                }
+            });
             res.render('index',{data:data,party:parties,total:total});
         }
     )
